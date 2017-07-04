@@ -48,9 +48,8 @@ const initialState   =  {
 ```
 To use it, all we have to do is to import createStore function and export its result
 
-import RSP from 'react-store-proxy';
-
 ```javascript
+import RSP from 'react-store-proxy';
 const initialState   =  {
   todos: [{
     text: 'Eat food',
