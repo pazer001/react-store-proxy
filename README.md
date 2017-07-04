@@ -10,7 +10,7 @@ RSP is a very tiny library which not affect your bundle size and aim to be very 
 # Motivation
 RSP is here to solve a problem caused by Redux and Mobx.
 
-##Redux
+## Redux
 The most popular store library for redux made by dan abramov.
 
 Redux is a good library but it's weakness is it's boilerplate. it takes more boilerplate and learning curve.
