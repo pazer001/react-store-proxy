@@ -4,5 +4,9 @@
   "description": "Create a react store using proxy",
   "main": "index.js",
   "author": "Paz Lazar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "loadash": "0.0.2",
+    "react": "^15.6.1"
+  }
 }
