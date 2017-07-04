@@ -97,4 +97,8 @@ for this simple usage, all you have to do when you want to add you new todo is j
 
 it doesnt care if you use some async action. the only thing matter is that you assign a new value to you store.
 
-And if you bwant you can build as many stores as you like and architect youre actions where ever you want.
+And if you bwant you can build as many stores as you like and architect your actions where ever you want.
+
+# Performance
+Proxer is will rerender your state only if change has been detected.
+Also, if you chand some sub-property of your store, Proxer will not deep check it the whole store but only the sub-property you made change to.
