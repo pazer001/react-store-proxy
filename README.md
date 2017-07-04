@@ -1,14 +1,14 @@
-# Proxer
+# React Store Proxy
 
 # Introduction
-Proxer is a store library for react which uses Proxy.
+RSP is a store library for react which uses Proxy.
 
 It helps you write a general store which connect all your app to.
 
-Proxer is a very tiny library which not affect your bundle size and aim to be very fast.
+RSP is a very tiny library which not affect your bundle size and aim to be very fast.
 
 # Motivation
-Proxer is here to solve a problem caused by Redux and Mobx.
+RSP is here to solve a problem caused by Redux and Mobx.
 
 ##Redux
 The most popular store library for redux made by dan abramov.
@@ -22,8 +22,8 @@ A new kind of store library but its main core is that it watch for changes.
 
 This method create a little boilerplate and is efficient but not efficient as redux.
 
-## Proxer
-Proxer came to solve these problem.
+## RSP
+RSP came to solve these problem.
 
 instead of creating lots of boilerplate, all you have to do is to create a store, use our Provider component and import your store when ever you want. that's it!
 
@@ -48,7 +48,7 @@ const initialState   =  {
 ```
 To use it, all we have to do is to import createStore function and export its result
 
-import Proxer from 'react-store-proxy';
+import RSP from 'react-store-proxy';
 
 ```javascript
 const initialState   =  {
@@ -61,20 +61,20 @@ const initialState   =  {
   }]
 }
 
-const store    = Proxer.createStore(initialState);
+const store    = RSP.createStore(initialState);
 export default store;
 ```
 Now, go to your root App component and wrap it with our Provider component like that.
 
 ```javascript
 import React, { Component } from 'react';
-import Proxer from 'react-store-proxy';
+import RSP from 'react-store-proxy';
 import store from './store';
 
 class App extends Component {
   render() {
     return (
-      <Proxer bind={this}>
+      <RSP bind={this}>
       <div className="App">
         <button onClick={() => store.todos.push({text: 'My new todo', completed: false})}>click here</button>
         <p className="App-intro">
@@ -83,7 +83,7 @@ class App extends Component {
           )}
         </p>
       </div>
-      </Proxer>
+      </RSP>
     );
   }
 }
@@ -100,5 +100,5 @@ it doesnt care if you use some async action. the only thing matter is that you a
 And if you bwant you can build as many stores as you like and architect your actions where ever you want.
 
 # Performance
-Proxer is will rerender your state only if change has been detected.
-Also, if you chand some sub-property of your store, Proxer will not deep check it the whole store but only the sub-property you made change to.
+RSP is will rerender your state only if change has been detected.
+Also, if you chand some sub-property of your store, RSP will not deep check it the whole store but only the sub-property you made change to.

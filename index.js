@@ -1,12 +1,12 @@
 import React from 'react';
 import {isEqual, cloneDeep} from 'lodash';
 
-export default class Proxer extends React.Component {
+export default class RSP extends React.Component {
     static providerRoot;
 
     static render(object = null, key = null, value = null, middleware = null) {
         if (middleware && typeof middleware === 'function') middleware(cloneDeep(object), key, cloneDeep(value));
-        Proxer.providerRoot.setState({});
+        RSP.providerRoot.setState({});
     }
 
     static createStore(object = {}, config = {}) {
@@ -67,7 +67,7 @@ export default class Proxer extends React.Component {
     }
 
     componentWillMount() {
-        Proxer.providerRoot     =   this.props.bind;
+        RSP.providerRoot     =   this.props.bind;
     }
 
     render() {
