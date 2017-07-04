@@ -48,7 +48,7 @@ const initialState   =  {
 ```
 To use it, all we have to do is to import createStore function and export its result
 
-import {createStore} from 'react-store-proxy';
+import Proxer from 'react-store-proxy';
 
 ```javascript
 const initialState   =  {
@@ -61,20 +61,20 @@ const initialState   =  {
   }]
 }
 
-const store    = createStore(initialState);
+const store    = Proxer.createStore(initialState);
 export default store;
 ```
 Now, go to your root App component and wrap it with our Provider component like that.
 
 ```javascript
 import React, { Component } from 'react';
-import {Provider} from 'react-store-proxy';
+import Proxer from 'react-store-proxy';
 import store from './store';
 
 class App extends Component {
   render() {
     return (
-      <Provider bind={this}>
+      <Proxer bind={this}>
       <div className="App">
         <button onClick={() => store.todos.push({text: 'My new todo', completed: false})}>click here</button>
         <p className="App-intro">
@@ -83,7 +83,7 @@ class App extends Component {
           )}
         </p>
       </div>
-      </Provider>
+      </Proxer>
     );
   }
 }
