@@ -11,7 +11,7 @@ RSP is a very tiny library which not affect your bundle size and aim to be very 
 RSP is here to solve a problem caused by Redux and Mobx.
 
 ## Redux
-The most popular store library for redux made by dan abramov.
+The most popular store library for react (but not only) made by dan abramov.
 
 Redux is a good library but it's weakness is it's boilerplate. it takes more boilerplate and learning curve.
 
@@ -32,7 +32,10 @@ Well, it seems easy like mobx but here you dont have to use decorators which aff
 # How To Use
 First of all install the library:
 
+```javascript
 npm install react-store-proxy --save
+```
+
 Now, lets say you have this store object:
 
 ```javascript
@@ -101,3 +104,17 @@ And if you bwant you can build as many stores as you like and architect your act
 # Performance
 RSP is will rerender your state only if change has been detected.
 Also, if you chand some sub-property of your store, RSP will not deep check it the whole store but only the sub-property you made change to.
+
+# Problems
+Currently this library supports IE9 with one limitation - you cannot delete a property from your store like:
+
+```javascript
+delete object[key];
+```
+
+If IE9 is relevant to you, you can make the property to by null or undefined.
+
+```javascript
+object[key]     =   undefined;
+object[key]     =   null;
+```
