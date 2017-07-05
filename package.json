@@ -1,6 +1,6 @@
 {
   "name": "react-store-proxy",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Create a react store using proxy",
   "main": "index.js",
   "author": "Paz Lazar",
