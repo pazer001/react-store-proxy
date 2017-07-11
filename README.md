@@ -105,6 +105,10 @@ And if you bwant you can build as many stores as you like and architect your act
 RSP is will rerender your state only if change has been detected.
 Also, if you chand some sub-property of your store, RSP will not deep check it the whole store but only the sub-property you made change to.
 
+#Immutability
+No need to worry about this. when a new object assign to the store, we deep check to see if it changed from the last state.
+If so, a new Proxy object is created.
+
 # Problems
 Currently this library supports IE9 with one limitation - you cannot delete a property from your store like:
 
@@ -118,3 +122,62 @@ If IE9 is relevant to you, you can make the property to by null or undefined.
 object[key]     =   undefined;
 object[key]     =   null;
 ```
+
+# API
+## RSP.createStore
+This method will take 2 arguments. and return a new Proxy store object.
+First is the store object. the store object can be a regular object or an array.
+The second argument is a config object.
+```javascript
+const initialState   =  {
+  todos: [{
+    text: 'Eat food',
+    completed: true
+  }, {
+    text: 'Exercise',
+    completed: false
+  }]
+}
+
+
+const config  = {
+  name: 'Main',
+  toWindow: true,
+  middleware: (store, key, value) => store[key] === 'someValue'
+};
+
+const store   = Proxer.createStore(initialState, config);
+```
+
+## RSP.getStore
+When store is created, the object will become a Proxy object which is hard to watch on the console.
+if you want to see whats in you your store, you can use this method to recreate it as a regular object.
+```javascript
+const normalStore   =   RSP.createStore(store);
+console.log(normalStore);
+```
+
+# Config
+A config object can be attached to the createStore method as a second argument.
+The config object should look like:
+```javascript
+const config  = {
+  name: 'Main',
+  toWindow: true,
+    middleware: (store, key, value) => object[key] === 'someValue';
+```
+
+## toWindow
+This will attach the store to the global window object so you can change the store on the fly from the console.
+It will ignore it on Node environment.
+To use this parameter you must give a name like 'Main' in our example.
+Then on the console you can change your store with:
+```javascript
+stores.Main.someKey     =   `someValue`
+```
+
+## middleware
+Its a function that let you intercept the render process.
+When called, it gets 3 arguments from the last change - store, key and value.
+This function must return true for rendering or it will not continue and render.
+If all you want to do is just log the values then return true anyway.
