@@ -6,7 +6,7 @@
   "author": "Paz Lazar",
   "license": "ISC",
   "dependencies": {
-    "loadash": "0.0.2",
+    "lodash": "^4.17.4",
     "proxy-polyfill": "^0.1.7",
     "react": "^15.6.1"
   }
