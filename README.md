@@ -25,9 +25,9 @@ This method create a little boilerplate and is efficient but not efficient as re
 ## RSP
 RSP came to solve these problem.
 
-instead of creating lots of boilerplate, all you have to do is to create a store, use our Provider component and import your store when ever you want. that's it!
+instead of creating lots of boilerplate, all you have to do is to create a store, use our RSP component and import your store when ever you want. that's it!
 
-Well, it seems easy like mobx but here you dont have to use decorators which affect yor bundle size, you dont have to use observables which affects your performance and also you can create as many stores you like.
+Well, it seems easy like mobx but here you don't have to use decorators which affect yor bundle size, you don't have to use observables which affects your performance and also you can create as many stores you like.
 
 # How To Use
 First of all install the library:
@@ -49,7 +49,7 @@ const initialState   =  {
   }]
 }
 ```
-To use it, all we have to do is to import createStore function and export its result
+To use it, all we have to do is to import RSP class and use it's createStore function and export it's result
 
 ```javascript
 import RSP from 'react-store-proxy';
@@ -61,7 +61,7 @@ const initialState   =  {
     text: 'Exercise',
     completed: false
   }]
-}
+};
 
 const store    = RSP.createStore(initialState);
 export default store;
@@ -97,13 +97,13 @@ Thats it!
 
 for this simple usage, all you have to do when you want to add you new todo is just to create you action and push to its array.
 
-it doesnt care if you use some async action. the only thing matter is that you assign a new value to you store.
+it doesn't matter if you use some async action. the only thing matter is that you assign a new value to your store.
 
-And if you bwant you can build as many stores as you like and architect your actions where ever you want.
+And if you want, you can build as many stores as you like and architect your actions where ever you want.
 
 # Performance
-RSP is will rerender your state only if change has been detected.
-Also, if you chand some sub-property of your store, RSP will not deep check it the whole store but only the sub-property you made change to.
+RSP is will re-render your app only if change has been detected.
+Also, if you change some sub-property of your store, RSP will not deep check the whole store but only the sub-property you made change to.
 
 #Immutability
 No need to worry about this. when a new object assign to the store, we deep check to see if it changed from the last state.
@@ -137,7 +137,7 @@ const initialState   =  {
     text: 'Exercise',
     completed: false
   }]
-}
+};
 
 
 const config  = {
@@ -153,7 +153,7 @@ const store   = Proxer.createStore(initialState, config);
 When store is created, the object will become a Proxy object which is hard to watch on the console.
 if you want to see whats in you your store, you can use this method to recreate it as a regular object.
 ```javascript
-const normalStore   =   RSP.createStore(store);
+const normalStore   =   RSP.getStore(store);
 console.log(normalStore);
 ```
 
@@ -164,7 +164,7 @@ The config object should look like:
 const config  = {
   name: 'Main',
   toWindow: true,
-    middleware: (store, key, value) => object[key] === 'someValue';
+  middleware: (store, key, value) => object[key] === 'someValue';
 ```
 
 ## toWindow
