@@ -31,7 +31,7 @@ export default class RSP extends React.Component {
                         }
                         break;
                     default:
-                        if (object[key] !== value) {
+                        if (!object[key] || object[key] !== value) {
                             object[key] = value;
                             this.render(object, key, value, config.middleware)
                         }
