@@ -173,7 +173,7 @@ It will ignore it on Node environment.
 To use this parameter you must give a name like 'Main' in our example.
 Then on the console you can change your store with:
 ```javascript
-stores.Main.someKey     =   `someValue`
+stores.Main.someKey     =   `someValue`;
 ```
 
 ## middleware
@@ -181,3 +181,6 @@ Its a function that let you intercept the render process.
 When called, it gets 3 arguments from the last change - store, key and value.
 This function must return true for rendering or it will not continue and render.
 If all you want to do is just log the values then return true anyway.
+
+## renderCallback
+Because setState in react is async, you can now set this property as a function for callback after rendering.
